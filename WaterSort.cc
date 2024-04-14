@@ -2,11 +2,36 @@
 #include <vector>
 #include <algorithm>
 #include <random>
+#include <ctime>
 
 using namespace std;
 
 typedef vector<char> VC;
 typedef vector<VC> VVC;
+
+
+void esperarEnter() {
+    cout << "Presiona Enter para comenzar el juego: " << std::endl;
+    // Espera hasta que se pulse Enter
+    while (cin.get() != '\n');
+    cout << endl;
+}
+
+void imprimirTiempo(double segundos) {
+    int horas = segundos / 3600;
+    segundos -= horas * 3600;
+    int minutos = segundos / 60;
+    segundos -= minutos * 60;
+
+    cout << "Tiempo transcurrido: ";
+    if (horas > 0) cout << horas << " h" << ' ';
+    
+    if (minutos > 0) cout << minutos << " min" << ' ';
+    
+    cout.setf(ios::fixed);
+    cout.precision(4);
+    cout << segundos << " seg" << endl;
+}
 
 VVC crearTauler(int Recipients, int Tamany) {
     VVC Tauler(Recipients, VC(Tamany, ' '));
@@ -95,12 +120,14 @@ void imprimirMoviments(int m) {
 }
 
 int main() {
+inicio: 
     VVC Tauler = crearTauler(8, 4);
     VVC TaulerInicial = Tauler;
     VVC TaulerPrev, TaulerPrev2;
     TaulerPrev = TaulerPrev2 = Tauler;
+    esperarEnter();
+    clock_t start = clock(); // Marcar el tiempo de inicio
     imprimirTauler(Tauler);
-
     int r1, r2;
     int moviments = 0;
     imprimirMoviments(moviments);
@@ -130,4 +157,10 @@ int main() {
         moviments_prev2 = moviments_prev;
         moviments_prev = moviments;
     }
+    clock_t end = clock(); // Marcar el tiempo de finalización
+    double tiempoTranscurrido = static_cast<double>(end - start) / CLOCKS_PER_SEC; // Calcular el tiempo
+    imprimirTiempo(tiempoTranscurrido);
+    cin.get();  // Se come el ultimo Enter
+    cout << endl;
+    goto inicio; // Vuelve al principio
 }
