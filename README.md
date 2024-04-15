@@ -12,7 +12,7 @@ Water sort puzzle is a game that player should sort the same colors into bottles
   cd terminal_water_sort/
 ```
 
-Install my-project with g++
+Compile the proyect with g++
 
 ```bash
   g++ *.cc -o WaterSort.exe
