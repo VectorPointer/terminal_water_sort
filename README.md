@@ -7,6 +7,11 @@ Water sort puzzle is a game that player should sort the same colors into bottles
 
 ## Installation
 
+```bash
+  git clone https://github.com/vTH0R/terminal_water_sort
+  cd terminal_water_sort/
+```
+
 Install my-project with g++
 
 ```bash
