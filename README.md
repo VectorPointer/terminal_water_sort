@@ -1,7 +1,5 @@
 
-# Project Title
-
-A brief description of what this project does and who it's for
+# Terminal Water Sort
 
 Water sort puzzle is a game that player should sort the same colors into bottles and this project.
 
